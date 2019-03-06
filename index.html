@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+	<style>* {
+   margin: 0;
+   padding: 0;
+}</style>
+    <script>
+	var xs=1080, xy=1920;
+var image, font, bold;
+var url =
+		'./fnt.otf';
+var url2 =
+		'./bold.otf';
+var dagar = 69;
+var giltigTid = '2 maj - 31 maj';
+var multiplier = 2.74111675127;
+var regionl1 = "Göteborg", regionl2 = "";
+
+var animList = ['./anim/Comp 1_00000.png', 'anim/Comp 1_00001.png', 
+                                    'anim/Comp 1_00002.png', 'anim/Comp 1_00003.png', 
+                                    'anim/Comp 1_00004.png', 'anim/Comp 1_00005.png',
+									'anim/Comp 1_00006.png', 'anim/Comp 1_00007.png', 
+                                    'anim/Comp 1_00008.png', 'anim/Comp 1_00009.png', 
+                                    'anim/Comp 1_00010.png', 'anim/Comp 1_00011.png',
+									'anim/Comp 1_00012.png', 'anim/Comp 1_00013.png', 
+                                    'anim/Comp 1_00014.png', 'anim/Comp 1_00015.png', 
+                                    'anim/Comp 1_00016.png', 'anim/Comp 1_00017.png',
+									'anim/Comp 1_00018.png', 'anim/Comp 1_00019.png', 
+                                    'anim/Comp 1_00020.png', 'anim/Comp 1_00021.png', 
+                                    'anim/Comp 1_00022.png', 'anim/Comp 1_00023.png'];
+
+function setup() {
+  createCanvas(xs, xy);
+  frameRate = 60;
+	img = loadImage(animList[0]);
+	font = loadFont(url);
+	bold = loadFont(url2);
+}
+
+var integerr = 1;
+
+function draw() {
+//img.position(0,0);
+	image(img, 0, 0, xs, xy);
+	
+	if (frameCount % 3 == 0) {
+	img = loadImage(animList[integerr]);
+	if (integerr >= 23) {
+	integerr = 0;
+	} else {
+	integerr++;
+	}
+	}
+	
+	// Dagar
+	textAlign(CENTER);
+	textFont(font);
+	textSize(80* multiplier);
+  fill('#00394d');
+	text(dagar, xs/2, xy/1.95);
+	
+	textAlign(LEFT);
+	
+	// Giltighetstid
+	textFont(bold);
+	textSize(21*multiplier);
+  fill('#00394d');
+	text(giltigTid, xs/8.5, xy*0.66);
+	
+	// Region 1
+	textFont(bold);
+	textSize(37*multiplier);
+  fill('#00394d');
+	text(regionl1, xs*0.12, xy*0.22);
+	
+	// Region 2
+	textFont(bold);
+	textSize(37*multiplier);
+  fill('#00394d');
+	text(regionl2, xs*0.12, xy*0.264);
+}
+
+function mouseClicked() {
+  if (mouseY < 50*multiplier) {
+    dagar = prompt('Dagar kvar:');
+    giltigTid = prompt('Giltighetstid:');
+    regionl1 = prompt('Region Linje 1:');
+    regionl2 = prompt('Region Linje 2:');
+  }
+}
+	</script>
+  </head>
+</html>
